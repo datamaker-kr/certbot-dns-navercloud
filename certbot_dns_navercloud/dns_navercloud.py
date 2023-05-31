@@ -99,7 +99,7 @@ class _NaverCloudClient:
     def get_domain_and_host(self, domain, name):
         try:
             self.get_domain_id(domain)
-            return domain, name.removesuffix('.' + domain)
+            return domain, name.replace('.' + domain, '')
         except AssertionError:
             subdomains = domain.split('.', 1)
             return self.get_domain_and_host(subdomains[1], name)
